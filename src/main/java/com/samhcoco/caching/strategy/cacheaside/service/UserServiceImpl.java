@@ -5,6 +5,7 @@ import com.samhcoco.caching.strategy.cacheaside.repository.UserRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -15,7 +16,9 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
+    @Cacheable(value = "users", key = "#id")
     public User getById(long id) {
+        log.info("cache MISS: User with ID '{}' retrieved from database.", id);
         return userRepository.findById(id);
     }
 
