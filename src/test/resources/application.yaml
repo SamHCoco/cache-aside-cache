@@ -9,10 +9,10 @@ spring:
       host: localhost
       port: 6379
   datasource:
-    url: jdbc:mysql://localhost:3306/cache-aside-cache
-    username: admin
-    password: admin
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:h2:mem:cache-aside-cache
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
