@@ -1,10 +1,10 @@
 services:
   mysql:
     image: mysql:9.7
-    container_name: mysql9-db-read-through-cache
+    container_name: cache-aside-cache-mysql9
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: read-through-cache
+      MYSQL_DATABASE: cache-aside-cache
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: root
@@ -12,6 +12,13 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:8.2
+    container_name: cache-aside-cache-redis8
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
 
 volumes:
   mysql_data:
