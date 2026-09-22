@@ -1,4 +1,4 @@
-package com.samhcoco.caching.strategy.readthrough.config;
+package com.samhcoco.caching.strategy.cacheaside.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
