@@ -1,11 +1,15 @@
 spring:
   application:
-    name: read-through-cache
+    name: cache-aside-cache
   output:
     ansi:
       enabled: ALWAYS
+  data:
+    redis:
+      host: localhost
+      post: 6379
   datasource:
-    url: jdbc:mysql://localhost:3306/read-through-cache
+    url: jdbc:mysql://localhost:3306/cache-aside-cache
     username: admin
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
