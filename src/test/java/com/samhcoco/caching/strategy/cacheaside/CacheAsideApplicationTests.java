@@ -1,10 +1,10 @@
-package com.samhcoco.caching.strategy.readthrough;
+package com.samhcoco.caching.strategy.cacheaside;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReadThroughCacheApplicationTests {
+class CacheAsideApplicationTests {
 
 	@Test
 	void contextLoads() {

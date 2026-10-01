@@ -1,13 +1,13 @@
-package com.samhcoco.caching.strategy.readthrough;
+package com.samhcoco.caching.strategy.cacheaside;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReadThroughCacheApplication {
+public class CacheAsideApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReadThroughCacheApplication.class, args);
+		SpringApplication.run(CacheAsideApplication.class, args);
 	}
 
 }
