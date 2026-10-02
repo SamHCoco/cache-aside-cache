@@ -10,20 +10,25 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 
+import java.time.Duration;
+
 @Configuration
 @EnableCaching
 public class CacheConfig {
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+        RedisCacheConfiguration defaultConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .disableCachingNullValues()
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(
                                                             new GenericJackson2JsonRedisSerializer()
                 ));
 
+        RedisCacheConfiguration usersCacheConfig = defaultConfig.entryTtl(Duration.ofMinutes(20));
+
         return RedisCacheManager.builder(connectionFactory)
-                                .cacheDefaults(config)
+                                .cacheDefaults(defaultConfig)
+                                .withCacheConfiguration("users", usersCacheConfig)
                                 .build();
     }
 }
